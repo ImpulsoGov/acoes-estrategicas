@@ -24,7 +24,9 @@ if st.checkbox('Duas ou mais equipes, com profissionais adicionais (além da equ
 if st.checkbox('Duas ou mais equipes, com profissionais adicionais (além da equpe mínima), possibilidade de equipes com funcionamento de pelo menos 60h semanais com especificades e com profissionais residentes nas equipes'):
     acoes.extend(['Formação Profissional','Programa Saúde na Hora','Informatiza APS','Residência Profissional','Equipes de Saúde Bucal','Unidade Odontológica Móvel','Centro de Especialidades Odontológicas','Laboratório Regional de Prótese Dentária (LRPD)','Programa Saúde na Escola (PSE)','Programa Academia da Saúde','Equipes de Consultório na Rua','Equipe de Atenção Básica Prisional (eABP)','Agente Comunitário de Saúde','Atenção Integral à Saúde dos Adolescentes em Situação de Privação de Liberdade'])
 
+tabela_acoes = pd.read_csv("acoes.csv")
+
 if st.button('Ver ações'):
-    data = {'Ações Estratégicas': np.unique(acoes)}
-    df = pd.DataFrame(data)
+    tabela_acoes = tabela_acoes[tabela_acoes['Ação Estratégica'].isin(np.unique(acoes))]
+    df = pd.DataFrame(tabela_acoes)
     st.dataframe(df)
