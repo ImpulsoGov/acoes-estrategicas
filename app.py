@@ -31,16 +31,14 @@ tabela_acoes = pd.read_csv("acoes.csv")
 
 if st.button('Ver ações'):
     tabela_acoes = tabela_acoes[tabela_acoes['Ação Estratégica'].isin(np.unique(acoes))]
-    # st.dataframe(tabela_acoes)
-
     col = tabela_acoes.columns
     st.markdown("""<table>
         <tr>
-            <th style="width:12px">{}</th>
             <th style="width:123px">{}</th>
-            <th style="width:90px">{}</th>
-            <th style="width:185px">{}</th>
-            <th style="width:185px">{}</th>
+            <th style="width:123px">{}</th>
+            <th style="width:110px">{}</th>
+            <th style="width:175px">{}</th>
+            <th style="width:175px">{}</th>
         </tr>""".format(col[0], col[1], col[2], col[3], col[4]), unsafe_allow_html=True)
     for i in tabela_acoes.index:
         linha = tabela_acoes.loc[i]
@@ -48,8 +46,8 @@ if st.button('Ver ações'):
                 <tr>
                     <td style="height:200px; width:125px">{}</td>
                     <td style="height:200px; width:125px">{}</td>
-                    <td style="height:200px; width:90px">{}</td>
-                    <td style="height:200px; width:185px">{}</td>
-                    <td style="height:200px; width:185px">{}</td>
+                    <td style="height:200px; width:110px">{}</td>
+                    <td style="height:200px; width:175px">{}</td>
+                    <td style="height:200px; width:175px">{}</td>
                 </tr>""".format(linha[0], linha[1], linha[2], linha[3], linha[4]), unsafe_allow_html=True)
     st.markdown("""</table>""", unsafe_allow_html=True)
